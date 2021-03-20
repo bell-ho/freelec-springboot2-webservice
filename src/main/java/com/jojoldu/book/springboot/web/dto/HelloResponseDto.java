@@ -1,9 +1,9 @@
 package com.jojoldu.book.springboot.web.dto;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@Getter
+@Data
 @RequiredArgsConstructor
 public class HelloResponseDto {
 
