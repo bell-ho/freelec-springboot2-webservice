@@ -11,6 +11,15 @@
     <div class="row">
         <div class="col-md-6">
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+            {{#webName}}
+                Logged in as : <span id="user">{{webName}}</span>
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+            {{/webName}}
+
+            {{^webName}}   <!--머스테치에서 해당값이 존재 하지 않는 경우 ^를 사용-->
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+            {{/webName}}
         </div>
     </div>
     <!--목록 출력 영역-->
