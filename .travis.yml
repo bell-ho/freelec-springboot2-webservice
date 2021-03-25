@@ -5,6 +5,7 @@ jdk:
 branches:
   only:
     - master
+    - origin
 
 # Travis CI 서버의 HOME
 cache:
@@ -13,6 +14,11 @@ cache:
     - '$HOME/.gradle'
 
 script: "./gradlew clean build"
+
+#p.326 Travis CI .travis.yml 설정 후 build 이슈
+#./gradlew: Permission denied git에 permission을 업데이트 해줘야 travis가 실행할 수 있다.
+before_install:
+  - chmod +x gradlew
 
 before_deploy:
   - zip -r freelec-springboot2-webservice *
@@ -30,10 +36,6 @@ deploy:
   local_dir: deploy # before_deploy에서 생성한 디렉토리
   wait-util-deployed: true
 
-#p.326 Travis CI .travis.yml 설정 후 build 이슈
-#./gradlew: Permission denied git에 permission을 업데이트 해줘야 travis가 실행할 수 있다.
-before_install:
-  - chmod +x gradlew
 
 # CI 실행 완료시 메일로 알람 이멜로
 notifications:
