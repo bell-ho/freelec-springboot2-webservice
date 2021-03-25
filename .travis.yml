@@ -36,16 +36,18 @@ deploy:
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
 
-#deploy:
-#  - provider: s3
-#    access_key_id: $AWS_ACCESS_KEY
-#    secret_access_key: : $AWS_SECRET_KEY
-#    bucket: freelec-springboot4-build
-#    region: ap-norheast-2
-#    skip_cleanup: true
-#    acl: private
-#    local_dir: deploy
-#    wait-util-deployed: true
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: freelec-springboot4-build # S3 버킷
+    key: freelec-springboot2-webservice.zip
+
+    bundle_type: zip
+    application: freelec-springboot2-webservice
+    deployment_group: freelec-springboot2-group
+
+    region: ap-northeast-2
+    wait-until-deployed: true
 
 # CI 실행 완료시 메일로 알람 이멜로
 notifications:
