@@ -17,24 +17,24 @@ script: "./gradlew clean build"
 
 #p.326 Travis CI .travis.yml 설정 후 build 이슈
 #./gradlew: Permission denied git에 permission을 업데이트 해줘야 travis가 실행할 수 있다.
-before_install:
-  - chmod +x gradlew
+#before_install:
+#  - chmod +x gradlew
 
 before_deploy:
   - zip -r freelec-springboot2-webservice *
   - mkdir -p deply
-  - mv freelec-springboot2-webservice.zip deply/freelec-springboot2-webservice.zip
-
 deploy:
-  -provider: s3
-  access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
-  secret_access_key: : $AWS_SECRET_KEY # Travis repo settings에 설정된 값
-  bucket: freelec-springboot4-webservice # s3버킷
-  region: ap-norheast-2
-  skip_cleanup: true
-  acl: private # zip 파일 접근을 private으로
-  local_dir: deploy # before_deploy에서 생성한 디렉토리
-  wait-util-deployed: true
+#  -provider: s3
+#  access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+#  secret_access_key: : $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+#  bucket: freelec-springboot4-webservice # s3버킷
+#  region: ap-norheast-2
+#  skip_cleanup: true
+#  acl: private # zip 파일 접근을 private으로
+#  local_dir: deploy # before_deploy에서 생성한 디렉토리
+#  wait-util-deployed: true  - mv freelec-springboot2-webservice.zip deply/freelec-springboot2-webservice.zip
+
+#
 
 
 # CI 실행 완료시 메일로 알람 이멜로
