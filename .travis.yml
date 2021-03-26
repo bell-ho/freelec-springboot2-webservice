@@ -26,9 +26,9 @@ before_deploy:
   - cp build/libs/*.jar before-deploy/
   - cd before-deploy && zip -r before-deploy * # before-deploy로 이동후 전체 압축
   - cd ../ && mkdir -p deploy # 상위 디렉토리로 이동후 deploy 디렉토리 생성
-  - mv freelec-springboot2-webservice.zip deploy deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
+  - mv before-deploy/before-deploy.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
 
-#  2안 - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
+#  2안 이거 안됨 - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
 #  1안 - mv before-deploy/before-deploy.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
 #  원래꺼 - mv before-deploy/before-deploy.zip deploy/springboot2-webservice.zip # deploy로 zip파일 이동
 
