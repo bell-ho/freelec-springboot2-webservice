@@ -6,12 +6,12 @@
 </head>
 <body>
 {{>layout/header}}
-<h1>스프링부트 테스트 Ver.2</h1>
+<h1>스프링 부트로 시작하는 웹 서비스</h1>
 <div class="col-md-12">
     <div class="row">
         <div class="col-md-6">
             {{#webName}}
-            <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+                <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
                 Logged in as : <span id="user">{{webName}}</span>
                 <a href="/logout" class="btn btn-info active" role="button">Logout</a>
             {{/webName}}
