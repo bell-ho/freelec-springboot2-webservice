@@ -28,14 +28,6 @@ before_deploy:
   - cd ../ && mkdir -p deploy # 상위 디렉토리로 이동후 deploy 디렉토리 생성
   - mv before-deploy/before-deploy.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
 
-#  2안 이거 안됨 - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
-#  1안 - mv before-deploy/before-deploy.zip deploy/freelec-springboot2-webservice.zip # deploy로 zip파일 이동
-#  원래꺼 - mv before-deploy/before-deploy.zip deploy/springboot2-webservice.zip # deploy로 zip파일 이동
-
-#  - zip -r freelec-springboot2-webservice *
-#  - mkdir -p deploy
-#  - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
-
 
 deploy:
   - provider: s3
