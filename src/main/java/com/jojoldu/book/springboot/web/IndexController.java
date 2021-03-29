@@ -2,6 +2,7 @@ package com.jojoldu.book.springboot.web;
 
 import com.jojoldu.book.springboot.config.auth.LoginUser;
 import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
+import com.jojoldu.book.springboot.domain.user.User;
 import com.jojoldu.book.springboot.service.posts.PostsService;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -21,13 +22,19 @@ public class IndexController {
     private final PostsService postsService;
     private final HttpSession httpSession;
 
+    public String convert(SessionUser user) {
+        String[] uE = user.getEmail().split("@");
+        String starE = uE[0].substring(0, 3) + "****";
+        return starE;
+    }
+
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
 
         if (user != null) {
-            String[] uE = user.getEmail().split("@");
-            model.addAttribute("webName", uE[0]);
+            String starE = convert(user);
+            model.addAttribute("webName", starE);
         }
 
         return "index";
@@ -38,9 +45,8 @@ public class IndexController {
         model.addAttribute("posts", postsService.findAllDesc());
 
         if (user != null) {
-            String[] uE = user.getEmail().split("@");
-            model.addAttribute("webName", uE[0]);
-//            model.addAttribute("webName", user.getName());
+            String starE = convert(user);
+            model.addAttribute("webName", starE);
         }
         return "posts-save";
     }
@@ -53,9 +59,8 @@ public class IndexController {
         model.addAttribute("posts", postsService.findAllDesc());
 
         if (user != null) {
-            String[] uE = user.getEmail().split("@");
-            model.addAttribute("webName", uE[0]);
-//            model.addAttribute("webName", user.getName());
+            String starE = convert(user);
+            model.addAttribute("webName", starE);
         }
 
         return "posts-update";
