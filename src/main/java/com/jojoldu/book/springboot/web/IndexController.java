@@ -25,10 +25,9 @@ public class IndexController {
     public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
 
-//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-
         if (user != null) {
-            model.addAttribute("webName", user.getName());
+            String[] uE = user.getEmail().split("@");
+            model.addAttribute("webName", uE[0]);
         }
 
         return "index";
@@ -39,22 +38,24 @@ public class IndexController {
         model.addAttribute("posts", postsService.findAllDesc());
 
         if (user != null) {
-            System.out.println("user.getName() : "+user.getName());
-            model.addAttribute("webName", user.getName());
+            String[] uE = user.getEmail().split("@");
+            model.addAttribute("webName", uE[0]);
+//            model.addAttribute("webName", user.getName());
         }
         return "posts-save";
     }
 
     @GetMapping("/posts/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model,@LoginUser SessionUser user) {
+    public String postsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
 
         model.addAttribute("posts", postsService.findAllDesc());
 
         if (user != null) {
-            System.out.println("user.getName() : "+user.getName());
-            model.addAttribute("webName", user.getName());
+            String[] uE = user.getEmail().split("@");
+            model.addAttribute("webName", uE[0]);
+//            model.addAttribute("webName", user.getName());
         }
 
         return "posts-update";
